@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLMSurf - AI Agent For macOS | Automate Your Mac Tasks</title>
+    <meta name="description" content="LLMSurf is a powerful AI agent for macOS that automates tasks, searches the web, and answers questions using local LLM models. Seamlessly integrate AI with your Mac workflow.">
+    <meta name="keywords" content="LLMSurf, AI Agent, macOS, automation, task automation, local LLM, artificial intelligence, Mac application">
+    <meta name="author" content="LLMSurf">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/yyaadet/llmsurf">
+    <meta property="og:title" content="LLMSurf - AI Agent For macOS">
+    <meta property="og:description" content="Automate your Mac tasks with LLMSurf, a powerful AI agent that integrates seamlessly with macOS.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://github.com/yyaadet/llmsurf">
+    <meta property="twitter:title" content="LLMSurf - AI Agent For macOS">
+    <meta property="twitter:description" content="Automate your Mac tasks with LLMSurf, a powerful AI agent that integrates seamlessly with macOS.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0ea5e9;
+            --primary-dark: #0284c7;
+            --secondary-color: #6366f1;
+            --accent-color: #f472b6;
+            --text-color: #0f172a;
+            --light-text: #64748b;
+            --background: #ffffff;
+            --light-background: #f8fafc;
+            --card-background: #ffffff;
+            --border-radius: 1rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: var(--background);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 8rem 2rem 12rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff20" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            animation: wave 20s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1440px; }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            padding: 6rem 0;
+            margin-top: -6rem;
+        }
+
+        .feature-card {
+            background: var(--card-background);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: var(--light-text);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px -5px rgba(14, 165, 233, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(14, 165, 233, 0.4);
+        }
+
+        .cta-button i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover i {
+            transform: translateX(5px);
+        }
+
+        .screenshot {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            margin: 6rem 0;
+            transform: perspective(1000px) rotateX(2deg);
+            transition: var(--transition);
+        }
+
+        .screenshot:hover {
+            transform: perspective(1000px) rotateX(0);
+        }
+
+        .installation-section {
+            background: var(--light-background);
+            padding: 6rem 0;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .installation {
+            background: var(--card-background);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .installation h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .installation ol {
+            list-style-position: inside;
+            counter-reset: inst;
+        }
+
+        .installation li {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--light-background);
+            border-radius: 0.5rem;
+            counter-increment: inst;
+            display: flex;
+            align-items: center;
+        }
+
+        .installation li::before {
+            content: counter(inst);
+            min-width: 2rem;
+            height: 2rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: 600;
+        }
+
+        footer {
+            background: var(--text-color);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 6rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-section {
+            background: var(--light-background);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--card-background);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover i {
+            transform: scale(1.1);
+            color: var(--secondary-color);
+        }
+
+        .contact-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-card p {
+            color: var(--light-text);
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 1rem 10rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                padding: 4rem 0;
+                margin-top: -4rem;
+            }
+
+            .installation {
+                padding: 2rem;
+            }
+
+            .installation h2 {
+                font-size: 2rem;
+            }
+
+            .contact-section {
+                padding: 4rem 0;
+            }
+
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>LLMSurf</h1>
+            <p>Your Intelligent AI Assistant for macOS</p>
+            <a href="https://github.com/yyaadet/llmsurf/releases" class="cta-button">
+                Download LLMSurf
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="features">
+            <div class="feature-card">
+                <i class="fas fa-magic"></i>
+                <h3>Smart Application Control</h3>
+                <p>Open and manage your applications with natural language commands. Let LLMSurf handle your workflow automation.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-search"></i>
+                <h3>Intelligent Search</h3>
+                <p>Search Twitter and Rednote with AI-powered queries. Get relevant results faster and more accurately.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-brain"></i>
+                <h3>Local LLM Power</h3>
+                <p>Get answers and insights using powerful local language models. Keep your data private and secure.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Task Automation</h3>
+                <p>Transform natural conversations into executable tasks with just one click. Streamline your workflow effortlessly.</p>
+            </div>
+        </section>
+
+        <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/main.png" alt="LLMSurf Main Interface Screenshot - AI Agent for macOS">
+        </div>
+
+        <section class="installation-section">
+            <div class="container">
+                <h2>Quick Installation</h2>
+                <div class="installation">
+                    <ol>
+                        <li>Drag Ollama.app to /Applications</li>
+                        <li>Run Ollama</li>
+                        <li>Drag LLMSurf-v-xxx.app to /Applications</li>
+                        <li>Run LLMSurf</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <a href="mailto:yyaadet@qq.com" class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>yyaadet@qq.com</p>
+                </a>
+                <a href="https://twitter.com/yyaadet" class="contact-card" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                    <h3>Twitter</h3>
+                    <p>@yyaadet</p>
+                </a>
+                <a class="contact-card">
+                    <i class="fab fa-weixin"></i>
+                    <h3>WeChat</h3>
+                    <p>yyaadet2002</p>
+                </a>
+                <a href="https://github.com/yyaadet" class="contact-card" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub</h3>
+                    <p>@yyaadet</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p> 2025 LLMSurf. Made with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for macOS users. <a href="https://github.com/yyaadet/llmsurf">View on GitHub</a></p>
+        </div>
+    </footer>
+</body>
+</html>
