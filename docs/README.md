@@ -4,6 +4,11 @@
 
 An AI agent that can perform tasks on your macOS. It can open applications, search the twitter(X), rednote(xiaohongshu.com), and Google, and more.
 
+## Application 
+
+- Super Researcher
+- Native search engine
+
 ## Features
 
 - Open applications
