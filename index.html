@@ -214,17 +214,31 @@
             transform: translateX(5px);
         }
 
+        .screenshots-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
         .screenshot {
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            margin: 6rem 0;
-            transform: perspective(1000px) rotateX(2deg);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             transition: var(--transition);
         }
 
         .screenshot:hover {
-            transform: perspective(1000px) rotateX(0);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .installation-section {
@@ -510,6 +524,11 @@
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
+
+            .screenshots-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
         }
     </style>
 </head>
@@ -554,9 +573,13 @@
             </div>
         </section>
 
-        <div class="screenshot">
-            <img src="https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/main.png" alt="LLMSurf Main Interface Screenshot - AI Agent for macOS">
-            <img src="https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/knowledge_manage.png" alt="LLMSurf Knowledge management - AI Agent for macOS">
+        <div class="screenshots-container">
+            <div class="screenshot">
+                <img src="https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/main.png" alt="LLMSurf Main Interface Screenshot - AI Agent for macOS">
+            </div>
+            <div class="screenshot">
+                <img src="https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/knowledge_manage.png" alt="LLMSurf Knowledge management - AI Agent for macOS">
+            </div>
         </div>
 
         <section class="installation-section">
