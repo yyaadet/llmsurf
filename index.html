@@ -362,6 +362,134 @@
             font-size: 1rem;
         }
 
+        /* Add new pricing styles */
+        .pricing {
+            background: var(--light-background);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding: 0 1rem;
+        }
+
+        .pricing-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 2.5rem 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .pricing-card.popular::before {
+            content: 'Popular';
+            position: absolute;
+            top: 1rem;
+            right: -2rem;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 3rem;
+            transform: rotate(45deg);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card .price span {
+            font-size: 1.25rem;
+            color: var(--light-text);
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 2rem 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            margin: 1rem 0;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pricing-card ul li i {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+        }
+
+        .pricing-card .cta-button {
+            width: 100%;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .pricing-card.enterprise {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .pricing-card.enterprise h3,
+        .pricing-card.enterprise .price,
+        .pricing-card.enterprise ul li {
+            color: white;
+        }
+
+        .pricing-card.enterprise ul li i {
+            color: var(--accent-color);
+        }
+
+        .pricing-card.enterprise .cta-button {
+            background: white;
+            color: var(--primary-dark);
+        }
+
+        .savings {
+            font-size: 1rem;
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            color: var(--light-text);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
         @media (max-width: 768px) {
             .hero {
                 padding: 6rem 1rem 10rem;
@@ -376,31 +504,11 @@
             }
 
             .features {
+                padding: 2rem 1rem;
+            }
+
+            .pricing-grid {
                 grid-template-columns: 1fr;
-                padding: 4rem 0;
-                margin-top: -4rem;
-            }
-
-            .installation {
-                padding: 2rem;
-            }
-
-            .installation h2 {
-                font-size: 2rem;
-            }
-
-            .contact-section {
-                padding: 4rem 0;
-            }
-
-            .contact-section h2 {
-                font-size: 2rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 0 1rem;
             }
         }
     </style>
@@ -439,10 +547,16 @@
                 <h3>Task Automation</h3>
                 <p>Transform natural conversations into executable tasks with just one click. Streamline your workflow effortlessly.</p>
             </div>
+            <div class="feature-card">
+                <i class="fas fa-book"></i>
+                <h3>Knowledge Management</h3>
+                <p>Import and manage local knowledge from files and directories. Scan PDFs, PPTX, Word, documents and more to build your personal knowledge base.</p>
+            </div>
         </section>
 
         <div class="screenshot">
             <img src="https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/main.png" alt="LLMSurf Main Interface Screenshot - AI Agent for macOS">
+            <img src="https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/knowledge_manage.png" alt="LLMSurf Knowledge management - AI Agent for macOS">
         </div>
 
         <section class="installation-section">
@@ -458,40 +572,96 @@
                 </div>
             </div>
         </section>
-    </main>
-
-    <section class="contact-section">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <div class="contact-grid">
-                <a href="mailto:yyaadet@qq.com" class="contact-card">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>yyaadet@qq.com</p>
-                </a>
-                <a href="https://twitter.com/yyaadet" class="contact-card" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                    <h3>Twitter</h3>
-                    <p>@yyaadet</p>
-                </a>
-                <a class="contact-card">
-                    <i class="fab fa-weixin"></i>
-                    <h3>WeChat</h3>
-                    <p>yyaadet2002</p>
-                </a>
-                <a href="https://github.com/yyaadet" class="contact-card" target="_blank">
-                    <i class="fab fa-github"></i>
-                    <h3>GitHub</h3>
-                    <p>@yyaadet</p>
-                </a>
+        
+        <section class="pricing">
+            <h2>Choose Your Plan</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Free</h3>
+                    <div class="price">$0<span>/year</span></div>
+                    <p class="savings">Save $0 compared to monthly</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i>5 tool uses per day</li>
+                        <li><i class="fas fa-check"></i>10 knowledge uses per day</li>
+                        <li><i class="fas fa-check"></i>Basic chat functionality</li>
+                        <li><i class="fas fa-check"></i>Community support</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">$89<span>/year</span></div>
+                    <p class="savings">Save $19 compared to monthly</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i>10 tool uses per day</li>
+                        <li><i class="fas fa-check"></i>20 knowledge uses per day</li>
+                        <li><i class="fas fa-check"></i>Priority support</li>
+                        <li><i class="fas fa-check"></i>Knowledge management</li>
+                    </ul>
+                    <a href="#" class="cta-button">Start Free Trial</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">$299<span>/year</span></div>
+                    <p class="savings">Save $49 compared to monthly</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i>30 tool uses per day</li>
+                        <li><i class="fas fa-check"></i>60 knowledge uses per day</li>
+                        <li><i class="fas fa-check"></i>All Basic features</li>
+                        <li><i class="fas fa-check"></i>Premium support</li>
+                    </ul>
+                    <a href="#" class="cta-button">Start Free Trial</a>
+                </div>
+                
+                <div class="pricing-card enterprise popular">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom<span>/year</span></div>
+                    <p class="">Save $2000 compared to monthly</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i>Unlimited tool uses</li>
+                        <li><i class="fas fa-check"></i>Unlimited knowledge uses</li>
+                        <li><i class="fas fa-check"></i>All Premium features</li>
+                        <li><i class="fas fa-check"></i>24/7 Priority support</li>
+                    </ul>
+                    <a href="#" class="cta-button">Contact Sales</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="container">
-            <p> 2025 LLMSurf. Made with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for macOS users. <a href="https://github.com/yyaadet/llmsurf">View on GitHub</a></p>
-        </div>
-    </footer>
-</body>
+        <section class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-grid">
+                    <a href="mailto:yyaadet@qq.com" class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>yyaadet@qq.com</p>
+                    </a>
+                    <a href="https://twitter.com/yyaadet" class="contact-card" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                        <h3>Twitter</h3>
+                        <p>@yyaadet</p>
+                    </a>
+                    <a class="contact-card">
+                        <i class="fab fa-weixin"></i>
+                        <h3>WeChat</h3>
+                        <p>yyaadet2002</p>
+                    </a>
+                    <a href="https://github.com/yyaadet" class="contact-card" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <h3>GitHub</h3>
+                        <p>@yyaadet</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p> 2025 LLMSurf. Made with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for macOS users. <a href="https://github.com/yyaadet/llmsurf">View on GitHub</a></p>
+            </div>
+        </footer>
+    </body>
 </html>
