@@ -2,14 +2,15 @@
 
 ![LLMSurf](https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png)
 
-An AI agent that can perform tasks on your macOS. It can open applications, search the twitter(X) and rednote(xiaohongshu.com), and more.
+An AI agent that can perform tasks on your macOS. It can open applications, search the twitter(X), rednote(xiaohongshu.com), and Google, and more.
 
 ## Features
 
 - Open applications
-- Search the twitter(X) and rednote
-- Answer questions with local LLM models
+- Search the twitter(X), rednote(xiaohongshu.com) and Google
+- Answer questions with search results or local knowledges
 - Transform conversation to task. You can run the task with one click.
+- Support local native LLM models and cloud openai like models.
 
 ## Installation
 
@@ -18,9 +19,30 @@ An AI agent that can perform tasks on your macOS. It can open applications, sear
 3. Drag LLMSurf-v-xxx.app to /Applications
 4. Run LLMSurf
 
+
+Solve macOS App Opening Issue in One Minute! Fix the error: "Apple cannot verify that 'App Cleaner & Uninstaller' does not contain malware that may harm your Mac or compromise your privacy."
+
+1. Open Terminal (press Command+Space and search for Terminal)
+2. Enter these two commands:
+
+```shell
+sudo spctl --master-disable
+
+#(navigate to the applications folder)
+cd /Applications 
+
+# (use Tab key to auto-complete)
+sudo xattr -rd com.apple.quarantine /Applications/AutoSRT.app 
+```
+3. Enter your user password
+
+Done!
+
 ## Screenshots
 
 ![Main](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/main.png)
+
+![Main](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/knowledge_manage.png)
 
 ## Contact US
 
