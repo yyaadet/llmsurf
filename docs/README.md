@@ -37,7 +37,7 @@ sudo spctl --master-disable
 cd /Applications 
 
 # (use Tab key to auto-complete)
-sudo xattr -rd com.apple.quarantine /Applications/AutoSRT.app 
+sudo xattr -rd com.apple.quarantine /Applications/LLMSurf.app 
 ```
 3. Enter your user password
 
