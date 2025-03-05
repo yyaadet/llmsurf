@@ -2,7 +2,7 @@
 
 ![LLMSurf](https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png)
 
-An AI agent that can perform tasks on your macOS. It can open applications, search the twitter(X), rednote(xiaohongshu.com), and Google, and more.
+An AI agent that can perform tasks on your macOS. It can open applications, search the twitter(X), rednote(xiaohongshu.com), Reddit and Google, and more.
 
 ## Application 
 
@@ -11,11 +11,13 @@ An AI agent that can perform tasks on your macOS. It can open applications, sear
 
 ## Features
 
-- Open applications
-- Search the twitter(X), rednote(xiaohongshu.com) and Google
-- Answer questions with search results or local knowledges
+- Search the twitter(X), rednote(xiaohongshu.com), Reddit and Google
+- Answer questions with search results or local knowledges, summary and user comment analysis
 - Transform conversation to task. You can run the task with one click.
 - Support local native LLM models and cloud openai like models.
+- Prevent duplicated knowledges
+- Visual knowledge crawler
+- Manage knowledges, delete knowledges, auto update knowledge, open knowledge in the local desktop and more
 
 ## Installation
 
