@@ -60,4 +60,4 @@ Done!
 
 ## Recommendation
 
-- [AutoSRT](https://github.com/yyaadet/AutoSRT) is an macOS app that automatically generates dual language subtitles from video files.
+- [AutoSRT](https://github.com/yyaadet/autosrt_page) is an macOS app that automatically generates dual language subtitles from video files.
