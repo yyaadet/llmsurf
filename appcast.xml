@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>LLMSurf</title>
+        <item>
+            <title>1.1.0</title>
+            <pubDate>Fri, 07 Mar 2025 10:39:06 +0800</pubDate>
+            <sparkle:version>100</sparkle:version>
+            <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/yyaadet/llmsurf/releases/download/v1.1.0/LLMSurf-v1.1.0.dmg" length="27134057" type="application/octet-stream"/>
+        </item>
+    </channel>
+</rss>
