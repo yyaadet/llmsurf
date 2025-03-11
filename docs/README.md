@@ -18,8 +18,9 @@ An AI agent that can perform tasks on your macOS. Safe Realtime RAG Agent. It ca
 - Answer questions with search results or local knowledges, summary and user comment analysis
 - Transform conversation to task. You can run the task with one click.
 - Support local native LLM models and cloud openai like models.
+- Intelligent multiple round conversation
+- Visual web crawler
 - Prevent duplicated knowledges
-- Visual knowledge crawler
 - Manage knowledges, delete knowledges, auto update knowledge, open knowledge in the local desktop and more
 
 ## Installation
