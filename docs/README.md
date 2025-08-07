@@ -25,11 +25,16 @@ An AI agent that can perform tasks on your macOS. Safe Realtime RAG Agent. It ca
 
 ## Installation
 
+### Install ollama
+
 1. Drag Ollama.app to /Applications
 2. Run Ollama
-3. Drag LLMSurf-v-xxx.app to /Applications
-4. Run LLMSurf
 
+
+### Install App
+
+1. Drag LLMSurf-v-xxx.app to /Applications
+2. Run LLMSurf
 
 Solve macOS App Opening Issue in One Minute! Fix the error: "Apple cannot verify that 'App Cleaner & Uninstaller' does not contain malware that may harm your Mac or compromise your privacy."
 
@@ -48,6 +53,28 @@ sudo xattr -rd com.apple.quarantine /Applications/LLMSurf.app
 3. Enter your user password
 
 Done!
+
+### Install models
+
+If the app downloads models failed or the models are not in the App resources folder, we can download them and install them manually.
+
+You can try download SentenceBERT model manually from [https://github.com/yyaadet/llmsurf/releases/download/v1.0.0/SentenceBERT.mlmodelc.zip] .
+
+1. Unzip it. You can see a file named `SentenceBERT.mlmodelc`.
+2. Open the Terminal app.
+3. Run command in the terminal: `mkdir -p ~/Library/Application\ Support/LLMSurf/Models/SentenceBERT`
+4. Run command in the terminal: `cp -rf SentenceBERT.mlmodelc ~/Library/Application\ Support/LLMSurf/Models/SentenceBERT`
+
+
+Download rerank model from [https://github.com/yyaadet/llmsurf/releases/download/v1.0.0/BGEReranker.mlmodelc.zip] .
+
+1. Unzip it. You can see a file named `BGEReranker.mlmodelc.zip`.
+2. Run command in the terminal: `mkdir -p ~/Library/Application\ Support/LLMSurf/Models/BGEReranker`
+3. Run command in the terminal: `cp -rf BGEReranker.mlmodelc ~/Library/Application\ Support/LLMSurf/Models/BGEReranker.mlmodelc`
+
+
+Of course, you can operate in GUI.
+
 
 ## Screenshots
 
