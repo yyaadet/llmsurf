@@ -58,10 +58,10 @@ Done!
 
 If the app downloads models failed or the models are not in the App resources folder, we can download them and install them manually.
 
-You can try download SentenceBERT model manually from [https://github.com/yyaadet/llmsurf/releases/download/v1.0.0/SentenceBERT.mlmodelc.zip] .
+You can try download SentenceBERT model manually from [https://github.com/yyaadet/llmsurf/releases/download/v1.0.0/SentenceBERT.mlmodelc.zip].
 
 1. Unzip it. You can see a file named `SentenceBERT.mlmodelc`.
-2. Open the Terminal app.
+2. Open the Terminal app. If your downloads are in the folder `~/Downloads`, you should run the command: `cd ~/Downloads`
 3. Run command in the terminal: `mkdir -p ~/Library/Application\ Support/LLMSurf/Models/SentenceBERT`
 4. Run command in the terminal: `cp -rf SentenceBERT.mlmodelc ~/Library/Application\ Support/LLMSurf/Models/SentenceBERT`
 
@@ -69,8 +69,9 @@ You can try download SentenceBERT model manually from [https://github.com/yyaade
 Download rerank model from [https://github.com/yyaadet/llmsurf/releases/download/v1.0.0/BGEReranker.mlmodelc.zip] .
 
 1. Unzip it. You can see a file named `BGEReranker.mlmodelc.zip`.
-2. Run command in the terminal: `mkdir -p ~/Library/Application\ Support/LLMSurf/Models/BGEReranker`
-3. Run command in the terminal: `cp -rf BGEReranker.mlmodelc ~/Library/Application\ Support/LLMSurf/Models/BGEReranker.mlmodelc`
+2. Open the Terminal app. If your downloads are in the folder `~/Downloads`, you should run the command: `cd ~/Downloads`
+3. Run command in the terminal: `mkdir -p ~/Library/Application\ Support/LLMSurf/Models/BGEReranker`
+4. Run command in the terminal: `cp -rf BGEReranker.mlmodelc ~/Library/Application\ Support/LLMSurf/Models/BGEReranker.mlmodelc`
 
 
 Of course, you can operate in GUI.
