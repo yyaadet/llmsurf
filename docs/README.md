@@ -71,7 +71,7 @@ Download rerank model from [https://github.com/yyaadet/llmsurf/releases/download
 1. Unzip it. You can see a file named `BGEReranker.mlmodelc.zip`.
 2. Open the Terminal app. If your downloads are in the folder `~/Downloads`, you should run the command: `cd ~/Downloads`
 3. Run command in the terminal: `mkdir -p ~/Library/Application\ Support/LLMSurf/Models/BGEReranker`
-4. Run command in the terminal: `cp -rf BGEReranker.mlmodelc ~/Library/Application\ Support/LLMSurf/Models/BGEReranker.mlmodelc`
+4. Run command in the terminal: `cp -rf BGEReranker.mlmodelc ~/Library/Application\ Support/LLMSurf/Models/BGEReranker`
 
 
 Of course, you can operate in GUI.
