@@ -76,6 +76,10 @@ Download rerank model from [https://github.com/yyaadet/llmsurf/releases/download
 
 Of course, you can operate in GUI.
 
+**Or download from baidu disk**:
+
+链接: https://pan.baidu.com/s/1L2rWKGX0eDA_WeG_Mu19eA?pwd=t6jv 提取码: t6jv
+
 
 ## Screenshots
 
