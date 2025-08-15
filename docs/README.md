@@ -66,7 +66,7 @@ You can try download SentenceBERT model manually from [https://github.com/yyaade
 4. Run command in the terminal: `cp -rf SentenceBERT.mlmodelc ~/Library/Application\ Support/LLMSurf/Models/SentenceBERT`
 
 
-Download rerank model from [https://github.com/yyaadet/llmsurf/releases/download/v1.0.0/BGEReranker.mlmodelc.zip] .
+Download rerank model from [https://github.com/yyaadet/llmsurf/releases/download/v3.0.0/BGEReranker.mlmodelc.zip] .
 
 1. Unzip it. You can see a file named `BGEReranker.mlmodelc.zip`.
 2. Open the Terminal app. If your downloads are in the folder `~/Downloads`, you should run the command: `cd ~/Downloads`
