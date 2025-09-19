@@ -2,18 +2,18 @@
 
 ![LLMSurf](https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png)
 
-An AI agent that can perform tasks on your macOS. Safe Realtime RAG Agent. It can open applications, search the twitter(X), rednote(xiaohongshu.com), Reddit and Google, and more.
+An AI agent that can perform tasks on your macOS. Safe Realtime RAG Agent. It can search the twitter(X), rednote(xiaohongshu.com), Reddit, baidu and Google etc.
 
 ## Cases
 
 - Super Researcher
 - Native search engine
 - Native knowledge library
-- Stock market analysis
-- Investment analysis
+- Native R calculations
 
 ## Features
 
+- Embedded R runtime
 - Search the twitter(X), rednote(xiaohongshu.com), Reddit and Google
 - Answer questions with search results or local knowledges, summary and user comment analysis
 - Transform conversation to task. You can run the task with one click.
