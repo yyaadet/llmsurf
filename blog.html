@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLMSurf Blog - AI Agent Insights & Tutorials</title>
+    <meta name="description" content="Explore the latest insights, tutorials, and use cases for LLMSurf - the powerful AI agent for macOS automation and intelligent task management.">
+    <meta name="keywords" content="LLMSurf, AI Agent, macOS, automation, R programming, machine learning, productivity, tutorials">
+    <meta name="author" content="LLMSurf">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/yyaadet/llmsurf/blog">
+    <meta property="og:title" content="LLMSurf Blog - AI Agent Insights & Tutorials">
+    <meta property="og:description" content="Explore the latest insights, tutorials, and use cases for LLMSurf - the powerful AI agent for macOS.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://github.com/yyaadet/llmsurf/blog">
+    <meta property="twitter:title" content="LLMSurf Blog - AI Agent Insights & Tutorials">
+    <meta property="twitter:description" content="Explore the latest insights, tutorials, and use cases for LLMSurf - the powerful AI agent for macOS.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0ea5e9;
+            --primary-dark: #0284c7;
+            --secondary-color: #6366f1;
+            --accent-color: #f472b6;
+            --text-color: #0f172a;
+            --light-text: #64748b;
+            --background: #ffffff;
+            --light-background: #f8fafc;
+            --card-background: #ffffff;
+            --border-radius: 1rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: var(--background);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 6rem 2rem 8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .blog-header {
+            background: var(--light-background);
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: -4rem;
+        }
+
+        .blog-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--card-background);
+            border: 2px solid var(--light-background);
+            color: var(--light-text);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .blog-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--light-text);
+        }
+
+        .blog-category {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--primary-dark);
+        }
+
+        .blog-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--light-text);
+        }
+
+        .blog-stats i {
+            margin-right: 0.25rem;
+        }
+
+        .featured-post {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.02);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .newsletter-section {
+            background: var(--light-background);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .newsletter-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-section p {
+            font-size: 1.125rem;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 400px;
+            margin: 0 auto;
+            gap: 0.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--light-background);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            background: var(--card-background);
+            color: var(--text-color);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .back-to-home:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .back-to-home i {
+            margin-right: 0.5rem;
+        }
+
+        footer {
+            background: var(--text-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .blog-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>LLMSurf Blog</h1>
+            <p>Discover insights, tutorials, and real-world applications of AI-powered automation for macOS</p>
+        </div>
+    </div>
+
+    <div class="blog-header">
+        <div class="container">
+            <h2>Latest Articles & Insights</h2>
+            <div class="blog-filters">
+                <button class="filter-btn active" data-category="all">All Posts</button>
+                <button class="filter-btn" data-category="tutorials">Tutorials</button>
+                <button class="filter-btn" data-category="usecases">Use Cases</button>
+                <button class="filter-btn" data-category="features">Features</button>
+                <button class="filter-btn" data-category="productivity">Productivity</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <a href="index.html" class="back-to-home">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Featured Post -->
+            <article class="blog-card featured-post" data-category="usecases">
+                <div class="featured-badge">Featured</div>
+                <div class="blog-image">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Use Cases</span>
+                        <span>January 15, 2025</span>
+                    </div>
+                    <h3 class="blog-title">How LLMSurf Revolutionized My Research Workflow: A Data Scientist's Journey</h3>
+                    <p class="blog-excerpt">Discover how Dr. Sarah Chen transformed her market research process from 2-day reports to 2-hour insights using LLMSurf's intelligent search and R integration capabilities.</p>
+                    <div class="blog-footer">
+                        <a href="research-workflow-revolution.html" class="read-more">Read More →</a>
+                        <div class="blog-stats">
+                            <span><i class="fas fa-eye"></i> 2.1k</span>
+                            <span><i class="fas fa-heart"></i> 89</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="tutorials">
+                <div class="blog-image">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Tutorial</span>
+                        <span>January 12, 2025</span>
+                    </div>
+                    <h3 class="blog-title">Getting Started with LLMSurf: Complete Setup Guide</h3>
+                    <p class="blog-excerpt">Step-by-step guide to installing and configuring LLMSurf on your Mac, including model setup, knowledge base creation, and first automation workflow.</p>
+                    <div class="blog-footer">
+                        <a href="getting-started-guide.html" class="read-more">Read More →</a>
+                        <div class="blog-stats">
+                            <span><i class="fas fa-eye"></i> 1.8k</span>
+                            <span><i class="fas fa-heart"></i> 67</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="features">
+                <div class="blog-image">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Features</span>
+                        <span>January 10, 2025</span>
+                    </div>
+                    <h3 class="blog-title">Deep Dive: Embedded R Runtime in LLMSurf</h3>
+                    <p class="blog-excerpt">Explore how LLMSurf's embedded R runtime enables complex statistical analysis and data visualization directly within conversations for more accurate insights.</p>
+                    <div class="blog-footer">
+                        <a href="embedded-r-runtime.html" class="read-more">Read More →</a>
+                        <div class="blog-stats">
+                            <span><i class="fas fa-eye"></i> 1.5k</span>
+                            <span><i class="fas fa-heart"></i> 54</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="productivity">
+                <div class="blog-image">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Productivity</span>
+                        <span>January 8, 2025</span>
+                    </div>
+                    <h3 class="blog-title">10 Ways LLMSurf Can Boost Your Daily Productivity</h3>
+                    <p class="blog-excerpt">From automated report generation to intelligent task management, discover practical ways LLMSurf can streamline your workflow and save hours each day.</p>
+                    <div class="blog-footer">
+                        <a href="productivity-guide.html" class="read-more">Read More →</a>
+                        <div class="blog-stats">
+                            <span><i class="fas fa-eye"></i> 2.3k</span>
+                            <span><i class="fas fa-heart"></i> 95</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="tutorials">
+                <div class="blog-image">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Tutorial</span>
+                        <span>January 5, 2025</span>
+                    </div>
+                    <h3 class="blog-title">Building Your Personal Knowledge Base with LLMSurf</h3>
+                    <p class="blog-excerpt">Learn how to import, organize, and leverage your documents, PDFs, and data files to create a powerful personal knowledge assistant that understands your work.</p>
+                    <div class="blog-footer">
+                        <a href="knowledge-base-tutorial.html" class="read-more">Read More →</a>
+                        <div class="blog-stats">
+                            <span><i class="fas fa-eye"></i> 1.9k</span>
+                            <span><i class="fas fa-heart"></i> 78</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="usecases">
+                <div class="blog-image">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Use Cases</span>
+                        <span>January 3, 2025</span>
+                    </div>
+                    <h3 class="blog-title">LLMSurf for Business Intelligence: Real-World Applications</h3>
+                    <p class="blog-excerpt">See how business consultants and analysts use LLMSurf to gather competitive intelligence, analyze market trends, and deliver insights faster than ever before.</p>
+                    <div class="blog-footer">
+                        <a href="business-intelligence-revolution.html" class="read-more">Read More →</a>
+                        <div class="blog-stats">
+                            <span><i class="fas fa-eye"></i> 1.7k</span>
+                            <span><i class="fas fa-heart"></i> 71</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="features">
+                <div class="blog-image">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Features</span>
+                        <span>December 28, 2024</span>
+                    </div>
+                    <h3 class="blog-title">Advanced Search Capabilities: Twitter, Reddit, and More</h3>
+                    <p class="blog-excerpt">Explore LLMSurf's intelligent web search features that can gather information from multiple platforms simultaneously, providing comprehensive insights for your queries.</p>
+                    <div class="blog-footer">
+                        <a href="advanced-search-guide.html" class="read-more">Read More →</a>
+                        <div class="blog-stats">
+                            <span><i class="fas fa-eye"></i> 1.6k</span>
+                            <span><i class="fas fa-heart"></i> 63</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="productivity">
+                <div class="blog-image">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Productivity</span>
+                        <span>December 25, 2024</span>
+                    </div>
+                    <h3 class="blog-title">Automating Repetitive Tasks: From Conversation to Execution</h3>
+                    <p class="blog-excerpt">Learn how LLMSurf's task automation feature can transform natural language descriptions into executable workflows, saving you time on routine operations.</p>
+                    <div class="blog-footer">
+                        <a href="task-automation-guide.html" class="read-more">Read More →</a>
+                        <div class="blog-stats">
+                            <span><i class="fas fa-eye"></i> 1.4k</span>
+                            <span><i class="fas fa-heart"></i> 58</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="newsletter-section">
+            <div class="container">
+                <h3>Stay Updated</h3>
+                <p>Get the latest tutorials, tips, and updates delivered to your inbox</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 LLMSurf. Made with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for developers and researchers. <a href="https://github.com/yyaadet/llmsurf">View on GitHub</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const category = btn.dataset.category;
+                const blogCards = document.querySelectorAll('.blog-card');
+
+                blogCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease-in';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Newsletter form
+        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('.newsletter-input').value;
+            alert(`Thank you for subscribing with email: ${email}`);
+            e.target.reset();
+        });
+
+        // Add fadeIn animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

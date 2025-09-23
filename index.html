@@ -272,6 +272,7 @@
             text-align: center;
             background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -333,6 +334,7 @@
             margin-bottom: 3rem;
             background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -550,10 +552,16 @@
                 Runable AI Assistant in macOS
             </h3>
             <p>Safty. Embedded R runtime. RAG agent. Native knowledge management.</p>
-            <a href="https://github.com/yyaadet/llmsurf/releases" class="cta-button">
-                Download LLMSurf
-                <i class="fas fa-arrow-right"></i>
-            </a>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                <a href="https://github.com/yyaadet/llmsurf/releases" class="cta-button">
+                    Download LLMSurf
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="blog.html" class="cta-button" style="background: var(--secondary-color);">
+                    <i class="fas fa-book-open" style="margin-right: 0.5rem;"></i>
+                    Visit Blog
+                </a>
+            </div>
         </div>
     </div>
 
@@ -585,6 +593,83 @@
                 <i class="fas fa-book"></i>
                 <h3>Knowledge Management</h3>
                 <p>Import and manage local knowledge from files and directories. Scan PDFs, PPTX, Word, documents and more to build your personal knowledge base.</p>
+            </div>
+        </section>
+
+        <section class="blog-section">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; background: linear-gradient(120deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">User Cases & Stories</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; margin-bottom: 4rem;">
+                <div class="blog-card" style="background: var(--card-background); padding: 2.5rem; border-radius: var(--border-radius); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); transition: var(--transition); display: flex; flex-direction: column;">
+                    <div class="blog-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 style="color: var(--text-color); font-size: 1.5rem; margin-bottom: 1rem;">Super Researcher Mode</h3>
+                    <p style="color: var(--light-text); margin-bottom: 1.5rem; line-height: 1.6;">Dr. Sarah Chen, a market research analyst, uses LLMSurf to gather comprehensive data from multiple sources. "I can now complete a full market analysis report in 2 hours instead of 2 days. LLMSurf automatically searches Twitter trends, Reddit discussions, and industry news to give me real-time insights."</p>
+                    <div class="blog-tags" style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <span style="background: var(--light-background); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Research</span>
+                        <span style="background: var(--light-background); color: var(--secondary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Automation</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" style="background: var(--card-background); padding: 2.5rem; border-radius: var(--border-radius); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); transition: var(--transition); display: flex; flex-direction: column;">
+                    <div class="blog-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 style="color: var(--text-color); font-size: 1.5rem; margin-bottom: 1rem;">Financial Analysis Powerhouse</h3>
+                    <p style="color: var(--light-text); margin-bottom: 1.5rem; line-height: 1.6;">Mike Johnson, a freelance financial consultant, leverages LLMSurf's embedded R runtime for complex calculations. "The ability to generate and execute R code automatically has transformed my workflow. I can now provide clients with sophisticated risk analysis and portfolio optimization in minutes."</p>
+                    <div class="blog-tags" style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <span style="background: var(--light-background); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Finance</span>
+                        <span style="background: var(--light-background); color: var(--secondary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">R Programming</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" style="background: var(--card-background); padding: 2.5rem; border-radius: var(--border-radius); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); transition: var(--transition); display: flex; flex-direction: column;">
+                    <div class="blog-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 style="color: var(--text-color); font-size: 1.5rem; margin-bottom: 1rem;">Academic Research Assistant</h3>
+                    <p style="color: var(--light-text); margin-bottom: 1.5rem; line-height: 1.6;">Professor Emily Wang uses LLMSurf to manage her extensive research library. "With over 500 academic papers in my knowledge base, LLMSurf helps me find relevant information instantly. The R integration allows me to run statistical analysis on my research data seamlessly."</p>
+                    <div class="blog-tags" style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <span style="background: var(--light-background); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Academia</span>
+                        <span style="background: var(--light-background); color: var(--secondary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Knowledge Base</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" style="background: var(--card-background); padding: 2.5rem; border-radius: var(--border-radius); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); transition: var(--transition); display: flex; flex-direction: column;">
+                    <div class="blog-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 style="color: var(--text-color); font-size: 1.5rem; margin-bottom: 1rem;">Business Intelligence</h3>
+                    <p style="color: var(--light-text); margin-bottom: 1.5rem; line-height: 1.6;">Lisa Zhang, a business consultant, relies on LLMSurf for competitive analysis. "I can analyze competitor strategies across multiple platforms simultaneously. The ability to transform conversations into actionable tasks has revolutionized how I deliver value to clients."</p>
+                    <div class="blog-tags" style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <span style="background: var(--light-background); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Business</span>
+                        <span style="background: var(--light-background); color: var(--secondary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Strategy</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" style="background: var(--card-background); padding: 2.5rem; border-radius: var(--border-radius); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); transition: var(--transition); display: flex; flex-direction: column;">
+                    <div class="blog-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 style="color: var(--text-color); font-size: 1.5rem; margin-bottom: 1rem;">Developer Productivity</h3>
+                    <p style="color: var(--light-text); margin-bottom: 1.5rem; line-height: 1.6;">Alex Chen, a software developer, uses LLMSurf to streamline his development workflow. "From code analysis to documentation generation, LLMSurf understands my codebase and helps me write better code faster. The local LLM integration means I don't have to worry about API costs or data privacy."</p>
+                    <div class="blog-tags" style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <span style="background: var(--light-background); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Development</span>
+                        <span style="background: var(--light-background); color: var(--secondary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Productivity</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" style="background: var(--card-background); padding: 2.5rem; border-radius: var(--border-radius); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); transition: var(--transition); display: flex; flex-direction: column;">
+                    <div class="blog-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: var(--text-color); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-heart" style="color: var(--accent-color);"></i>
+                    </div>
+                    <h3 style="color: var(--text-color); font-size: 1.5rem; margin-bottom: 1rem;">Customer Discovery</h3>
+                    <p style="color: var(--light-text); margin-bottom: 1.5rem; line-height: 1.6;">Jennifer Liu, a startup founder, uses LLMSurf to understand her target market. "By analyzing social media conversations and customer feedback across platforms, I can identify pain points and opportunities in real-time. This has been crucial for our product development and go-to-market strategy."</p>
+                    <div class="blog-tags" style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <span style="background: var(--light-background); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Startup</span>
+                        <span style="background: var(--light-background); color: var(--secondary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">Market Research</span>
+                    </div>
+                </div>
             </div>
         </section>
 

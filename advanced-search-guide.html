@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Search Capabilities - LLMSurf Features</title>
+    <meta name="description" content="Explore LLMSurf's intelligent web search features that can gather information from multiple platforms simultaneously, providing comprehensive insights for your queries.">
+    <meta name="keywords" content="LLMSurf, advanced search, web search, multi-platform, Twitter, Reddit, news aggregation">
+    <meta name="author" content="LLMSurf">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://github.com/yyaadet/llmsurf/blog/advanced-search-guide">
+    <meta property="og:title" content="Advanced Search Capabilities: Twitter, Reddit, and More">
+    <meta property="og:description" content="Explore LLMSurf's intelligent web search features across multiple platforms.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/main.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0ea5e9;
+            --primary-dark: #0284c7;
+            --secondary-color: #6366f1;
+            --accent-color: #f472b6;
+            --text-color: #0f172a;
+            --light-text: #64748b;
+            --background: #ffffff;
+            --light-background: #f8fafc;
+            --card-background: #ffffff;
+            --border-radius: 1rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: var(--background);
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #06b6d4 0%, #0891b2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero .meta {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .article-content {
+            background: var(--card-background);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            margin: -2rem auto 4rem;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-background);
+        }
+
+        .article-meta span {
+            background: #06b6d4;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .article-body h2 {
+            font-size: 1.75rem;
+            color: var(--text-color);
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .article-body h3 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin: 1.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .platform-card {
+            background: var(--light-background);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .platform-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .code-example {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            padding-top: 2rem;
+            border-top: 2px solid var(--light-background);
+        }
+
+        .nav-btn {
+            background: var(--card-background);
+            color: var(--text-color);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn:hover {
+            background: #06b6d4;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .article-content {
+                padding: 2rem 1rem;
+            }
+
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>Advanced Search Capabilities</h1>
+            <div class="meta">
+                <span>Features</span>
+                <time>December 28, 2024</time>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <article class="article-content">
+            <div class="article-meta">
+                <span>Features</span>
+                <time datetime="2024-12-28">December 28, 2024</time>
+            </div>
+
+            <div class="article-body">
+                <p>LLMSurf's advanced search capabilities represent a quantum leap in information gathering. By simultaneously searching across multiple platforms and applying intelligent analysis, LLMSurf can gather comprehensive insights from diverse sources in minutes, not hours. This feature transforms research, competitive analysis, and information synthesis tasks.</p>
+
+                <h2>The Multi-Platform Search Revolution</h2>
+
+                <p>Traditional research methods involve manually visiting each platform, entering search terms, and compiling results. LLMSurf's advanced search eliminates this tedious process by:</p>
+
+                <ul>
+                    <li><strong>Simultaneous Search:</strong> Query multiple platforms at once</li>
+                    <li><strong>Intelligent Analysis:</strong> Apply AI-powered filtering and synthesis</li>
+                    <li><strong>Contextual Understanding:</strong> Understand query intent and provide relevant results</li>
+                    <li><strong>Real-Time Results:</strong> Get up-to-date information from live sources</li>
+                    <li><strong>Comprehensive Coverage:</strong> Access information from diverse sources and perspectives</li>
+                </ul>
+
+                <h2>Supported Platforms</h2>
+
+                <div class="platform-grid">
+                    <div class="platform-card">
+                        <i class="fab fa-twitter"></i>
+                        <h3>Twitter/X</h3>
+                        <p>Real-time discussions, trending topics, and expert opinions</p>
+                    </div>
+                    <div class="platform-card">
+                        <i class="fab fa-reddit"></i>
+                        <h3>Reddit</h3>
+                        <p>Community discussions, detailed explanations, and user experiences</p>
+                    </div>
+                    <div class="platform-card">
+                        <i class="fas fa-newspaper"></i>
+                        <h3>News Sources</h3>
+                        <p>Latest developments, expert analysis, and industry updates</p>
+                    </div>
+                    <div class="platform-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Academic Sources</h3>
+                        <p>Research papers, studies, and scholarly articles</p>
+                    </div>
+                    <div class="platform-card">
+                        <i class="fab fa-linkedin"></i>
+                        <h3>LinkedIn</h3>
+                        <p>Professional insights, industry trends, and expert commentary</p>
+                    </div>
+                    <div class="platform-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Web Sources</h3>
+                        <p>Blogs, forums, and specialized industry websites</p>
+                    </div>
+                </div>
+
+                <h2>How Advanced Search Works</h2>
+
+                <h3>1. Query Understanding</h3>
+
+                <p>LLMSurf analyzes your natural language query to understand intent and context:</p>
+
+                <div class="code-example">
+// Example query analysis
+Query: "AI regulation in healthcare 2024"
+Intent: Research current regulatory landscape
+Platforms: Twitter, News, Academic, LinkedIn
+Keywords: artificial intelligence, healthcare, regulation, policy, 2024
+Context: Recent developments, expert opinions, case studies
+                </div>
+
+                <h3>2. Multi-Platform Search Execution</h3>
+
+                <p>LLMSurf simultaneously searches across selected platforms:</p>
+
+                <ul>
+                    <li><strong>Twitter/X:</strong> Recent tweets, trending hashtags, expert threads</li>
+                    <li><strong>Reddit:</strong> Relevant subreddits, discussion threads, user experiences</li>
+                    <li><strong>News Sources:</strong> Recent articles, press releases, industry reports</li>
+                    <li><strong>Academic Sources:</strong> Research papers, studies, scholarly articles</li>
+                    <li><strong>LinkedIn:</strong> Professional commentary, industry insights, expert posts</li>
+                    <li><strong>Web Sources:</strong> Specialized blogs, forums, and industry publications</li>
+                </ul>
+
+                <h3>3. Intelligent Filtering and Analysis</h3>
+
+                <p>Results are filtered and analyzed using AI:</p>
+
+                <ul>
+                    <li><strong>Relevance Scoring:</strong> Rank results by relevance to your query</li>
+                    <li><strong>Sentiment Analysis:</strong> Understand positive, negative, and neutral opinions</li>
+                    <li><strong>Source Credibility:</strong> Evaluate source reliability and expertise</li>
+                    <li><strong>Temporal Analysis:</strong> Identify recent vs. historical information</li>
+                    <li><strong>Trend Detection:</strong> Identify emerging patterns and themes</li>
+                </ul>
+
+                <h3>4. Synthesis and Presentation</h3>
+
+                <p>Results are synthesized into coherent, actionable insights:</p>
+
+                <ul>
+                    <li><strong>Executive Summary:</strong> Key findings and implications</li>
+                    <li><strong>Detailed Analysis:</strong> Comprehensive breakdown by platform and theme</li>
+                    <li><strong>Visual Elements:</strong> Charts, graphs, and data visualizations</li>
+                    <li><strong>Recommendations:</strong> Actionable next steps and considerations</li>
+                    <li><strong>Source Attribution:</strong> Clear citation of information sources</li>
+                </ul>
+
+                <h2>Practical Applications</h2>
+
+                <h3>Market Research</h3>
+
+                <div class="code-example">
+// Market research query
+"Current trends in electric vehicle market 2024"
+
+Results from:
+- Twitter: Consumer sentiment and adoption rates
+- Reddit: User experiences and technical discussions
+- News: Industry developments and regulatory changes
+- Academic: Research on EV technology and infrastructure
+- LinkedIn: Professional insights from industry experts
+
+Synthesized insights:
+- 47% increase in EV sales Q1 2024
+- Range anxiety remains top concern (34% of mentions)
+- Infrastructure expansion driving adoption (28% positive sentiment)
+- Battery technology improvements highlighted (42% of technical discussions)
+                </div>
+
+                <h3>Competitive Intelligence</h3>
+
+                <div class="code-example">
+// Competitive analysis query
+"Competitor A recent product developments and customer feedback"
+
+Multi-platform analysis:
+- Twitter: Product launch reactions and user complaints
+- Reddit: Detailed user reviews and comparison discussions
+- News: Official announcements and media coverage
+- LinkedIn: Professional commentary and expert analysis
+- Web: Review sites and industry publications
+
+Key findings:
+- New feature rollout mixed reviews (62% positive, 38% negative)
+- Customer service concerns (45% of complaints)
+- Market positioning effective (78% brand recognition)
+- Pricing strategy competitive (92% of comparisons favorable)
+                </div>
+
+                <h3>Technical Research</h3>
+
+                <div class="code-example">
+// Technical research query
+"Machine learning model optimization techniques 2024"
+
+Comprehensive results:
+- Twitter: Latest research discussions and conference highlights
+- Reddit: r/MachineLearning community insights and tutorials
+- Academic: Recent papers and research methodologies
+- LinkedIn: Professional best practices and case studies
+- Web: Blog posts and documentation updates
+
+Organized findings:
+- Transformer optimization techniques (45% of recent discussions)
+- Hardware acceleration methods (GPU/TPU optimization)
+- Distributed training strategies (multi-node setups)
+- Model compression and quantization approaches
+- Automated ML pipeline optimization tools
+                </div>
+
+                <h2>Advanced Search Techniques</h2>
+
+                <h3>1. Boolean and Advanced Operators</h3>
+
+                <p>Use advanced search syntax for precise results:</p>
+
+                <div class="code-example">
+// Advanced search examples
+"artificial intelligence" AND "healthcare regulation" -site:reddit.com
+"machine learning" OR "deep learning" filetype:pdf
+"climate change" site:news OR site:academic
+"startup funding" -spam -advertisement lang:en
+"product review" sentiment:positive..negative
+                </div>
+
+                <h3>2. Temporal Filtering</h3>
+
+                <p>Focus on recent or historical information:</p>
+
+                <div class="code-example">
+// Time-based search queries
+"AI developments" after:2024-01-01
+"blockchain trends" before:2023-12-31
+"cryptocurrency news" last:7 days
+"startup funding" last:30 days
+"research findings" last:6 months
+                </div>
+
+                <h3>3. Source-Specific Searches</h3>
+
+                <p>Target specific platforms or types of sources:</p>
+
+                <div class="code-example">
+// Platform-specific queries
+"market analysis" site:twitter.com OR site:linkedin.com
+"technical discussion" site:reddit.com/r/programming
+"academic research" site:arxiv.org OR site:scholar.google.com
+"industry news" site:techcrunch.com OR site:venturebeat.com
+"expert opinion" site:linkedin.com/in/*/professional
+                </div>
+
+                <h3>4. Sentiment and Tone Analysis</h3>
+
+                <p>Analyze emotional context and opinion:</p>
+
+                <div class="code-example">
+// Sentiment-based queries
+"product review" sentiment:very_positive
+"company news" tone:neutral..positive
+"technology discussion" sentiment:negative
+"market analysis" opinion:expert
+"customer feedback" emotion:frustration OR satisfaction
+                </div>
+
+                <h2>Best Practices</h2>
+
+                <h3>1. Craft Effective Queries</h3>
+
+                <ul>
+                    <li><strong>Be Specific:</strong> Include key terms, context, and constraints</li>
+                    <li><strong>Use Context:</strong> Add industry, timeframe, or perspective requirements</li>
+                    <li><strong>Combine Methods:</strong> Use multiple techniques for comprehensive results</li>
+                    <li><strong>Iterate:</strong> Refine queries based on initial results</li>
+                </ul>
+
+                <h3>2. Optimize for Your Use Case</h3>
+
+                <ul>
+                    <li><strong>Research:</strong> Focus on academic sources and expert opinions</li>
+                    <li><strong>Business Intelligence:</strong> Prioritize news, LinkedIn, and industry sources</li>
+                    <li><strong>Technical Analysis:</strong> Include Reddit, GitHub, and documentation</li>
+                    <li><strong>Market Research:</strong> Balance social media and professional sources</li>
+                </ul>
+
+                <h3>3. Manage Information Overload</h3>
+
+                <ul>
+                    <li><strong>Set Limits:</strong> Specify number of results or time ranges</li>
+                    <li><strong>Use Filters:</strong> Apply relevance and quality filters</li>
+                    <li><strong>Prioritize Sources:</strong> Focus on high-quality, authoritative sources</li>
+                    <li><strong>Save Searches:</strong> Store effective queries for reuse</li>
+                </ul>
+
+                <h2>Integration with Other Features</h2>
+
+                <h3>Knowledge Base Enhancement</h3>
+
+                <p>Save valuable findings to your knowledge base:</p>
+
+                <ul>
+                    <li><strong>Auto-Save:</strong> Automatically save relevant results</li>
+                    <li><strong>Organization:</strong> Categorize by topic, source, or project</li>
+                    <li><strong>Tagging:</strong> Apply relevant tags for easy retrieval</li>
+                    <li><strong>Integration:</strong> Connect with existing research and projects</li>
+                </ul>
+
+                <h3>R Analysis Integration</h3>
+
+                <p>Combine search results with statistical analysis:</p>
+
+                <ul>
+                    <li><strong>Quantitative Analysis:</strong> Analyze trends and patterns in data</li>
+                    <li><strong>Visualization:</strong> Create charts from search result data</li>
+                    <li><strong>Statistical Testing:</strong> Validate findings with appropriate tests</li>
+                    <li><strong>Modeling:</strong> Build predictive models based on gathered data</li>
+                </ul>
+
+                <h3>Automated Workflows</h3>
+
+                <p>Create automated research workflows:</p>
+
+                <ul>
+                    <li><strong>Scheduled Searches:</strong> Monitor topics continuously</li>
+                    <li><strong>Alert Systems:</strong> Get notified of important developments</li>
+                    <li><strong>Report Generation:</strong> Automated synthesis of findings</li>
+                    <li><strong>Trend Monitoring:</strong> Track changes over time</li>
+                </ul>
+
+                <h2>Performance and Limitations</h2>
+
+                <h3>Search Speed</h3>
+
+                <p>Typical performance characteristics:</p>
+
+                <ul>
+                    <li><strong>Simple Queries:</strong> 10-30 seconds for comprehensive results</li>
+                    <li><strong>Complex Multi-Platform:</strong> 1-3 minutes for thorough analysis</li>
+                    <li><strong>Large-Scale Research:</strong> 5-15 minutes for extensive searches</li>
+                    <li><strong>Real-Time Monitoring:</strong> Continuous updates with minimal delay</li>
+                </ul>
+
+                <h3>Rate Limits and API Constraints</h3>
+
+                <p>Be aware of platform limitations:</p>
+
+                <ul>
+                    <li><strong>Twitter/X:</strong> Rate limits on search queries</li>
+                    <li><strong>Reddit:</strong> API limitations on request frequency</li>
+                    <li><strong>News Sources:</strong> Paywall and access restrictions</li>
+                    <li><strong>Academic Sources:</strong> Access limitations for some content</li>
+                </ul>
+
+                <h2>Future Developments</h2>
+
+                <p>Advanced search capabilities continue to evolve:</p>
+
+                <ul>
+                    <li><strong>Real-Time Processing:</strong> Instant results for live queries</li>
+                    <li><strong>Enhanced AI Analysis:</strong> More sophisticated content understanding</li>
+                    <li><strong>Expanded Platform Support:</strong> Additional sources and integrations</li>
+                    <li><strong>Custom Search Agents:</strong> Personalized search strategies</li>
+                    <li><strong>Collaborative Research:</strong> Team-based search and analysis</li>
+                </ul>
+
+                <h2>Getting Started</h2>
+
+                <p>To maximize the benefits of advanced search:</p>
+
+                <ol>
+                    <li><strong>Start Simple:</strong> Begin with basic multi-platform searches</li>
+                    <li><strong>Learn Syntax:</strong> Master advanced search operators and techniques</li>
+                    <li><strong>Customize:</strong> Tailor searches to your specific needs and preferences</li>
+                    <li><strong>Save Templates:</strong> Create reusable search templates for common tasks</li>
+                    <li><strong>Integrate:</strong> Combine search results with other LLMSurf features</li>
+                </ol>
+
+                <h2>Conclusion</h2>
+
+                <p>LLMSurf's advanced search capabilities represent a fundamental shift in how we gather and synthesize information. By combining multi-platform search with intelligent analysis and AI-powered synthesis, LLMSurf transforms research from a time-consuming manual process into an efficient, comprehensive, and insightful activity.</p>
+
+                <p>Whether you're conducting market research, competitive analysis, academic studies, or technical investigations, LLMSurf's advanced search provides access to a world of information with unprecedented speed and intelligence.</p>
+
+                <p>The future of research is here, and it's powered by AI. Embrace LLMSurf's advanced search capabilities and discover insights that were previously impossible to obtain.</p>
+            </div>
+        </article>
+
+        <div class="navigation">
+            <a href="blog.html" class="nav-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Blog
+            </a>
+            <a href="index.html" class="nav-btn">
+                Visit Homepage
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

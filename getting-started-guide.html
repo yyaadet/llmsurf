@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with LLMSurf - Complete Setup Guide</title>
+    <meta name="description" content="Step-by-step guide to installing and configuring LLMSurf on your Mac, including model setup, knowledge base creation, and first automation workflow.">
+    <meta name="keywords" content="LLMSurf, setup guide, installation, configuration, Mac, Ollama, models">
+    <meta name="author" content="LLMSurf">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://github.com/yyaadet/llmsurf/blog/getting-started-guide">
+    <meta property="og:title" content="Getting Started with LLMSurf - Complete Setup Guide">
+    <meta property="og:description" content="Step-by-step guide to installing and configuring LLMSurf on your Mac.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/main.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0ea5e9;
+            --primary-dark: #0284c7;
+            --secondary-color: #6366f1;
+            --accent-color: #f472b6;
+            --text-color: #0f172a;
+            --light-text: #64748b;
+            --background: #ffffff;
+            --light-background: #f8fafc;
+            --card-background: #ffffff;
+            --border-radius: 1rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: var(--background);
+        }
+
+        .hero {
+            background: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero .meta {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .article-content {
+            background: var(--card-background);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            margin: -2rem auto 4rem;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-background);
+        }
+
+        .article-meta span {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .article-body h2 {
+            font-size: 1.75rem;
+            color: var(--text-color);
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .article-body h3 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin: 1.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .step {
+            background: var(--light-background);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2rem;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .warning {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            color: #92400e;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            padding-top: 2rem;
+            border-top: 2px solid var(--light-background);
+        }
+
+        .nav-btn {
+            background: var(--card-background);
+            color: var(--text-color);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .article-content {
+                padding: 2rem 1rem;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>Getting Started with LLMSurf</h1>
+            <div class="meta">
+                <span>Tutorial</span>
+                <time>January 12, 2025</time>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <article class="article-content">
+            <div class="article-meta">
+                <span>Tutorial</span>
+                <time datetime="2025-01-12">January 12, 2025</time>
+            </div>
+
+            <div class="article-body">
+                <p>Welcome to LLMSurf! This comprehensive guide will walk you through the complete setup process, from installation to your first automation workflow. By the end of this tutorial, you'll have a fully functional AI assistant running on your Mac.</p>
+
+                <h2>Prerequisites</h2>
+
+                <p>Before we begin, ensure you have:</p>
+
+                <ul>
+                    <li>A Mac running macOS 12.0 or later</li>
+                    <li>At least 8GB of RAM (16GB recommended)</li>
+                    <li>At least 10GB of free disk space</li>
+                    <li>An internet connection for initial setup</li>
+                    <li>Administrative privileges on your Mac</li>
+                </ul>
+
+                <h2>Step 1: Install Ollama</h2>
+
+                <div class="step">
+                    <h3><span class="step-number">1</span> Download Ollama</h3>
+                    <p>Ollama is the backbone that allows LLMSurf to run local language models efficiently.</p>
+
+                    <div class="code-block">
+# Download Ollama from the official website
+# Visit: https://ollama.ai/download
+
+# Or use Homebrew (if installed):
+brew install ollama
+                    </div>
+
+                    <p><strong>Alternative:</strong> Download the latest Ollama.app directly from the official website and drag it to your Applications folder.</p>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Start Ollama Service</h3>
+                    <p>Launch Ollama to begin the service:</p>
+
+                    <div class="code-block">
+# Start Ollama service
+ollama serve
+
+# Or launch Ollama.app from Applications folder
+                    </div>
+
+                    <p>You should see output indicating that Ollama is running on http://localhost:11434.</p>
+                </div>
+
+                <h2>Step 2: Install LLMSurf</h2>
+
+                <div class="step">
+                    <h3><span class="step-number">1</span> Download LLMSurf</h3>
+                    <p>Download the latest version of LLMSurf from the official releases:</p>
+
+                    <div class="code-block">
+# Visit the releases page
+open https://github.com/yyaadet/llmsurf/releases
+
+# Download the latest .dmg file
+# Example: LLMSurf-v1.0.0.dmg
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Install the Application</h3>
+                    <p>Follow the standard macOS installation process:</p>
+
+                    <ol>
+                        <li>Double-click the downloaded .dmg file</li>
+                        <li>Drag LLMSurf.app to your Applications folder</li>
+                        <li>Eject the disk image</li>
+                        <li>Launch LLMSurf from Applications</li>
+                    </ol>
+
+                    <div class="warning">
+                        <strong>Important:</strong> If you encounter a security warning, follow the steps in the troubleshooting section below.
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">3</span> Grant Permissions</h3>
+                    <p>LLMSurf may request certain permissions on first launch:</p>
+
+                    <ul>
+                        <li><strong>Accessibility:</strong> Required for system automation features</li>
+                        <li><strong>Screen Recording:</strong> Needed for visual analysis capabilities</li>
+                        <li><strong>File Access:</strong> Required for knowledge base operations</li>
+                    </ul>
+
+                    <p>Click "Allow" for each permission request to ensure full functionality.</p>
+                </div>
+
+                <h2>Step 3: Initial Configuration</h2>
+
+                <div class="step">
+                    <h3><span class="step-number">1</span> Welcome Screen</h3>
+                    <p>Upon first launch, you'll see the LLMSurf welcome screen:</p>
+
+                    <ul>
+                        <li>Review the welcome message and click "Get Started"</li>
+                        <li>Choose your preferred language</li>
+                        <li>Select your primary use case (Research, Development, Business, etc.)</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Model Selection</h3>
+                    <p>Choose the appropriate language model for your needs:</p>
+
+                    <ul>
+                        <li><strong>For General Use:</strong> Llama 2 7B or Mistral 7B</li>
+                        <li><strong>For Coding:</strong> CodeLlama or Deepseek Coder</li>
+                        <li><strong>For Research:</strong> Mixtral or Qwen models</li>
+                        <li><strong>For Speed:</strong> Gemma 2B or Phi models</li>
+                    </ul>
+
+                    <div class="code-block">
+# LLMSurf will automatically pull your selected model
+# Example commands that run in the background:
+ollama pull llama2:7b
+ollama pull nomic-embed-text
+                    </div>
+                </div>
+
+                <h2>Step 4: Create Your First Knowledge Base</h2>
+
+                <div class="step">
+                    <h3><span class="step-number">1</span> Access Knowledge Management</h3>
+                    <p>Navigate to the Knowledge section in LLMSurf:</p>
+
+                    <ul>
+                        <li>Click on "Knowledge" in the main menu</li>
+                        <li>Select "Create New Knowledge Base"</li>
+                        <li>Choose a descriptive name for your knowledge base</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Import Documents</h3>
+                    <p>Add your documents to the knowledge base:</p>
+
+                    <ul>
+                        <li><strong>Supported Formats:</strong> PDF, DOCX, TXT, MD, PPTX, XLSX</li>
+                        <li><strong>Drag & Drop:</strong> Simply drag files into the LLMSurf window</li>
+                        <li><strong>Folder Import:</strong> Import entire directories at once</li>
+                        <li><strong>Web Import:</strong> Add URLs for web content</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">3</span> Processing</h3>
+                    <p>LLMSurf will automatically process your documents:</p>
+
+                    <ul>
+                        <li>Text extraction and chunking</li>
+                        <li>Embedding generation for semantic search</li>
+                        <li>Index creation for fast retrieval</li>
+                        <li>Quality scoring and validation</li>
+                    </ul>
+                </div>
+
+                <h2>Step 5: Your First Automation</h2>
+
+                <div class="step">
+                    <h3><span class="step-number">1</span> Start a Conversation</h3>
+                    <p>Open LLMSurf and begin a new conversation:</p>
+
+                    <ul>
+                        <li>Type a question or describe a task</li>
+                        <li>Use natural language - no special syntax required</li>
+                        <li>Mention your knowledge base if relevant</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Try Basic Queries</h3>
+                    <p>Test with some simple requests:</p>
+
+                    <ul>
+                        <li>"Summarize the key findings from my research papers"</li>
+                        <li>"Analyze the competitive landscape in fintech"</li>
+                        <li>"Generate a report on market trends"</li>
+                        <li>"Help me debug this Python code"</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">3</span> Advanced Features</h3>
+                    <p>Once comfortable, try advanced capabilities:</p>
+
+                    <ul>
+                        <li><strong>Multi-platform Search:</strong> "Search Twitter and Reddit for recent discussions about AI"</li>
+                        <li><strong>R Code Generation:</strong> "Create a statistical analysis of my sales data"</li>
+                        <li><strong>Task Automation:</strong> "Set up a workflow to monitor competitor prices daily"</li>
+                        <li><strong>Document Analysis:</strong> "Extract key insights from these 50 research papers"</li>
+                    </ul>
+                </div>
+
+                <h2>Troubleshooting Common Issues</h2>
+
+                <h3>macOS Security Warnings</h3>
+
+                <div class="step">
+                    <p>If you encounter security warnings when launching LLMSurf:</p>
+
+                    <div class="code-block">
+# Open Terminal and run these commands:
+
+# 1. Disable Gatekeeper temporarily
+sudo spctl --master-disable
+
+# 2. Remove quarantine attributes
+cd /Applications
+sudo xattr -rd com.apple.quarantine LLMSurf.app
+
+# 3. Re-enable Gatekeeper (recommended)
+sudo spctl --master-enable
+                    </div>
+                </div>
+
+                <h3>Model Download Issues</h3>
+
+                <div class="step">
+                    <p>If models fail to download:</p>
+
+                    <ul>
+                        <li>Check your internet connection</li>
+                        <li>Verify Ollama is running (ollama serve)</li>
+                        <li>Try a different model size</li>
+                        <li>Check available disk space</li>
+                    </ul>
+                </div>
+
+                <h3>Performance Issues</h3>
+
+                <div class="step">
+                    <p>If LLMSurf runs slowly:</p>
+
+                    <ul>
+                        <li>Ensure you're using an appropriate model size</li>
+                        <li>Close other memory-intensive applications</li>
+                        <li>Consider upgrading your RAM if using large models</li>
+                        <li>Restart both Ollama and LLMSurf</li>
+                    </ul>
+                </div>
+
+                <h2>Best Practices</h2>
+
+                <h3>Knowledge Base Organization</h3>
+
+                <ul>
+                    <li>Create separate knowledge bases for different projects or domains</li>
+                    <li>Use descriptive names and tags for easy identification</li>
+                    <li>Regularly update your knowledge bases with new information</li>
+                    <li>Export important knowledge bases for backup</li>
+                </ul>
+
+                <h3>Model Selection</h3>
+
+                <ul>
+                    <li>Start with smaller models (7B parameters) for faster responses</li>
+                    <li>Use larger models (13B+ parameters) for complex analysis tasks</li>
+                    <li>Consider your hardware limitations when choosing model sizes</li>
+                    <li>Test different models for your specific use cases</li>
+                </ul>
+
+                <h3>Workflow Optimization</h3>
+
+                <ul>
+                    <li>Create templates for frequently used query types</li>
+                    <li>Use the conversation history to build complex multi-step tasks</li>
+                    <li>Leverage R integration for statistical analysis and data visualization</li>
+                    <li>Combine multiple capabilities for comprehensive workflows</li>
+                </ul>
+
+                <h2>Next Steps</h2>
+
+                <p>Now that you have LLMSurf set up, explore these advanced features:</p>
+
+                <ul>
+                    <li><strong>Custom Model Training:</strong> Fine-tune models on your specific domain</li>
+                    <li><strong>API Integration:</strong> Connect LLMSurf to your existing tools and workflows</li>
+                    <li><strong>Team Collaboration:</strong> Share knowledge bases and workflows with team members</li>
+                    <li><strong>Advanced Automation:</strong> Create complex multi-step automation workflows</li>
+                </ul>
+
+                <h2>Getting Help</h2>
+
+                <ul>
+                    <li><strong>Documentation:</strong> Visit the official documentation site</li>
+                    <li><strong>Community:</strong> Join the LLMSurf Discord community</li>
+                    <li><strong>GitHub Issues:</strong> Report bugs or request features</li>
+                    <li><strong>Email Support:</strong> Contact support@yyaadet.com</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+
+                <p>Congratulations! You now have a fully functional AI assistant running on your Mac. LLMSurf combines the power of local language models with intelligent automation to transform how you work with information.</p>
+
+                <p>Remember: The more you use LLMSurf, the better it becomes at understanding your needs and providing relevant assistance. Start with simple queries and gradually explore more complex use cases as you become comfortable with the system.</p>
+
+                <p>Welcome to the future of AI-assisted productivity!</p>
+            </div>
+        </article>
+
+        <div class="navigation">
+            <a href="blog.html" class="nav-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Blog
+            </a>
+            <a href="index.html" class="nav-btn">
+                Visit Homepage
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+</body>
+</html>
