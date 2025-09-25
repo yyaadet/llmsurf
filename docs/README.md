@@ -52,6 +52,10 @@ cd /Applications
 sudo xattr -rd com.apple.quarantine /Applications/LLMSurf.app 
 ```
 3. Enter your user password
+4. Open Settings -> Security & Privacy -> Security -> Allow Any developers
+5. Open LLMSurf
+
+![Allow Any developers](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/privacy.png)
 
 Done!
 
