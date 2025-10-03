@@ -1,8 +1,8 @@
-# LLMSurf - AI Agent For macOS
+# LLMSurf - Mining AI Agent For macOS
 
 ![LLMSurf](https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png)
 
-An AI agent that can perform tasks on your macOS. Safe Realtime RAG Agent. It can search the twitter(X), rednote(xiaohongshu.com), Reddit, Baidu, Weixin MP and Google etc.
+A Mining AI agent that can perform information mining on your macOS. It can search the Google, X, Reddit, Baidu freely etc, response with AI LLM, and check the LLM answer factually.
 
 ## Cases
 
@@ -11,16 +11,17 @@ An AI agent that can perform tasks on your macOS. Safe Realtime RAG Agent. It ca
 - Native knowledge library
 - Native R calculations
 - Customer Discovery
+- Data Mining
 
 ## Features
 
+- Search freely
+- Factually check LLM answer
 - Embedded R runtime
 - Search the twitter(X), rednote(xiaohongshu.com), Reddit, Baidu, Weixin MP and Google etc
-- Answer questions with search results or local knowledges, summary and user comment analysis
+- Answer questions with search results or local knowledges
 - Transform conversation to task. You can run the task with one click.
 - Support local native LLM models and cloud openai like models.
-- Intelligent multiple round conversation
-- Visual web crawler
 - Prevent duplicated knowledges
 - Manage knowledges, delete knowledges, auto update knowledge, open knowledge in the local desktop and more
 
@@ -91,6 +92,16 @@ Of course, you can operate in GUI.
 ![Main](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/main.png)
 
 ![Main](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/knowledge_manage.png)
+
+# LLM Response Check Factually
+
+LLMSurf can check the AI LLM response factually.
+
+1. We will show information citation in the LLM response.
+2. We will check the information citation factually.
+3. The numbers or claims in the LLM response will be checked factually.
+
+![LLM Response Check](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/llm_response_check.png)
 
 ## Contact US
 
