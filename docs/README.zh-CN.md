@@ -1,6 +1,6 @@
 # LLMSurf - macOS AI 数据挖掘智能助手
 
-![LLMSurf](https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png)
+![LLMSurf](https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/llmsurf.jpeg)
 
 一个可以在您的 macOS 上执行信息挖掘的 AI 智能助手。可以自由免费搜索 Google、X、Reddit、百度等平台，使用 AI LLM 回应，并对 LLM 回答进行事实核查。
 
