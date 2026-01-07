@@ -1,6 +1,6 @@
 # LLMSurf - Mining AI Agent For macOS
 
-![LLMSurf](https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/logo.png)
+![LLMSurf](https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/llmsurf.jpeg)
 
 A Mining AI agent that can perform information mining on your macOS. It can search the Google, X, Reddit, Baidu freely etc, response with AI LLM, and check the LLM answer factually.
 
