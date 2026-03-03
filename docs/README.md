@@ -1,8 +1,8 @@
-# LLMSurf - Mining AI Agent For macOS
+# So (Original name: LLMSurf) - Search and Organize AI Agent For macOS
 
-![LLMSurf](https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/llmsurf.jpeg)
+![So(LLMSurf)](https://raw.githubusercontent.com/yyaadet/llmsurf/main/images/llmsurf.jpeg)
 
-A Mining AI agent that can perform information mining on your macOS. It can search the Google, X, Reddit, Baidu freely etc, response with AI LLM, and check the LLM answer factually.
+A Mining AI agent that can perform information mining on your macOS. It can search the Google, X, Reddit, Baidu, Xiaohongshu, Weixin MP freely etc, response with AI, and check the AI answer factually.
 
 ## Cases
 
@@ -15,7 +15,7 @@ A Mining AI agent that can perform information mining on your macOS. It can sear
 
 ## Features
 
-- Search freely
+- Search freely and organize knowledge
 - Factually check LLM answer
 - Embedded R runtime
 - Search the twitter(X), rednote(xiaohongshu.com), Reddit, Baidu, Weixin MP and Google etc
@@ -35,8 +35,8 @@ A Mining AI agent that can perform information mining on your macOS. It can sear
 
 ### Install App
 
-1. Drag LLMSurf-v-xxx.app to /Applications
-2. Run LLMSurf
+1. Drag So-v-xxx.app to /Applications
+2. Run So
 
 Solve macOS App Opening Issue in One Minute! Fix the error: "Apple cannot verify that 'App Cleaner & Uninstaller' does not contain malware that may harm your Mac or compromise your privacy."
 
@@ -50,58 +50,31 @@ sudo spctl --master-disable
 cd /Applications 
 
 # (use Tab key to auto-complete)
-sudo xattr -rd com.apple.quarantine /Applications/LLMSurf.app 
+sudo xattr -rd com.apple.quarantine /Applications/So.app 
 ```
 3. Enter your user password
 4. Open Settings -> Security & Privacy -> Security -> Allow Any developers
-5. Open LLMSurf
+5. Open So
 
 ![Allow Any developers](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/privacy.png)
 
 Done!
 
-### Install models
-
-If the app downloads models failed or the models are not in the App resources folder, we can download them and install them manually.
-
-You can try download SentenceBERT model manually from [https://github.com/yyaadet/llmsurf/releases/download/v1.0.0/SentenceBERT.mlmodelc.zip].
-
-1. Unzip it. You can see a file named `SentenceBERT.mlmodelc`.
-2. Open the Terminal app. If your downloads are in the folder `~/Downloads`, you should run the command: `cd ~/Downloads`
-3. Run command in the terminal: `mkdir -p ~/Library/Application\ Support/LLMSurf/Models/SentenceBERT`
-4. Run command in the terminal: `cp -rf SentenceBERT.mlmodelc ~/Library/Application\ Support/LLMSurf/Models/SentenceBERT`
-
-
-Download rerank model from [https://github.com/yyaadet/llmsurf/releases/download/v3.0.0/BGEReranker.mlmodelc.zip] .
-
-1. Unzip it. You can see a file named `BGEReranker.mlmodelc.zip`.
-2. Open the Terminal app. If your downloads are in the folder `~/Downloads`, you should run the command: `cd ~/Downloads`
-3. Run command in the terminal: `mkdir -p ~/Library/Application\ Support/LLMSurf/Models/BGEReranker`
-4. Run command in the terminal: `cp -rf BGEReranker.mlmodelc ~/Library/Application\ Support/LLMSurf/Models/BGEReranker`
-
-
-Of course, you can operate in GUI.
-
-**Or download from baidu disk**:
-
-链接: https://pan.baidu.com/s/1L2rWKGX0eDA_WeG_Mu19eA?pwd=t6jv 提取码: t6jv
-
-
 ## Screenshots
 
 ![Main](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/main.png)
 
-![Main](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/knowledge_manage.png)
+![Knowledge Manage](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/knowledge_manage.png)
 
-# LLM Response Check Factually
+# Factually Check AI LLM Response
 
-LLMSurf can check the AI LLM response factually.
+So can check the AI LLM response factually.
 
 1. We will show information citation in the LLM response.
 2. We will check the information citation factually.
 3. The numbers or claims in the LLM response will be checked factually.
 
-![LLM Response Check](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/llm_response_check.png)
+![Factually Check](https://raw.githubusercontent.com/yyaadet/llmsurf/main/screenshots/llm_response_check.png)
 
 ## Contact US
 
