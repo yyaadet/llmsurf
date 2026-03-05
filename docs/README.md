@@ -4,6 +4,8 @@
 
 A Mining AI agent that can perform information mining on your macOS. It can search the Google, X, Reddit, Baidu, Xiaohongshu, Weixin MP freely etc, response with AI, and check the AI answer factually.
 
+![How to use?]()
+
 ## Cases
 
 - Super Researcher
